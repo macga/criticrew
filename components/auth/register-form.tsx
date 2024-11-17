@@ -51,7 +51,7 @@ export const RegisterForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="지금 크리티크루의 동료가 되어보세요"
+      headerLabel="지금 크리티크루의 동료가 되어보세요!"
       backButtonLabel="이미 계정을 갖고 계신가요? 로그인"
       backButtonHref="/auth/login"
       showSocial
@@ -115,9 +115,20 @@ export const RegisterForm = () => {
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
-          <Button disabled={isPending} type="submit" className="w-full">
+          <Button
+            disabled={isPending}
+            type="submit"
+            className="w-full"
+            size="lg"
+          >
             회원가입
           </Button>
+          <div className="text-muted-foreground text-sm">
+            계정을 생성하면 <a href="">서비스 약관</a> 및{" "}
+            <a href="">개인정보 보호정책</a>에 동의하게 됩니다. 뉴스, 제품 및
+            서비스에 대한 이메일을 가끔 보내드리므로 언제든지 거부할 수
+            있습니다.
+          </div>
         </form>
       </Form>
     </CardWrapper>

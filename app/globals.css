@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, :root {
+html,
+body,
+:root {
   height: 100%;
+  font-size: 1rem;
 }
-
-
+.text-muted-foreground a {
+  text-decoration: underline;
+}
 
 @layer base {
   :root {
@@ -64,8 +68,6 @@ html, body, :root {
     --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {
