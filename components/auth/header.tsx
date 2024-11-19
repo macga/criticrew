@@ -9,7 +9,7 @@ export const Header = ({ label }: HeaderProps) => {
         <img
           src="/img/logo-criticrew.svg"
           alt="criticrew"
-          className="w-32 h-auto dark:filter dark:invert"
+          className="w-40 h-auto dark:filter dark:invert"
         />
       </h1>
       <p className="text-muted-foreground text-sm">{label}</p>
