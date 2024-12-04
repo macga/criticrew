@@ -66,7 +66,7 @@ export default function LoginPage() {
       localStorage.setItem("token", responseData.token);
       toast.success("로그인되었습니다");
       router.push("/");
-    } catch (error) {
+    } catch {
       toast.error("로그인 중 오류가 발생했습니다");
     }
   }

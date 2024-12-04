@@ -52,7 +52,13 @@ export async function POST(req: Request) {
     }
 
     // 비밀번호를 제외한 사용자 정보
-    const { password: _, ...userWithoutPassword } = user;
+    const userWithoutPassword = {
+      id: user.id,
+      email: user.email,
+      nickname: user.nickname,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
 
     // JWT 토큰 생성 (모든 필요한 정보 포함)
     const token = jwt.sign(
