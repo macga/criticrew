@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "@/components/providers";
+import { Providers } from "@/components/providers";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import AppHeader from "@/components/app-header";
@@ -10,7 +10,7 @@ export default function UserRootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
+    <Providers>
       <SidebarProvider>
         <div className="flex min-h-screen flex-col w-full">
           <AppHeader />
@@ -20,6 +20,6 @@ export default function UserRootLayout({
           </div>
         </div>
       </SidebarProvider>
-    </ThemeProvider>
+    </Providers>
   );
 }

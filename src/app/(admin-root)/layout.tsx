@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "@/components/providers";
+import { Providers } from "@/components/providers";
 import { AdminSidebar } from "@/components/admin-sidebar";
 import {
   Breadcrumb,
@@ -23,7 +23,7 @@ export default function AdminRootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
+    <Providers>
       <SidebarProvider
         style={
           {
@@ -50,6 +50,6 @@ export default function AdminRootLayout({
           <main className="flex-1 p-6">{children}</main>
         </SidebarInset>
       </SidebarProvider>
-    </ThemeProvider>
+    </Providers>
   );
 }

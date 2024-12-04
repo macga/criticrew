@@ -12,7 +12,6 @@ import {
   Settings2,
   Popcorn,
 } from "lucide-react";
-
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -22,13 +21,19 @@ import {
   SidebarContent,
   SidebarFooter,
 } from "@/components/ui/sidebar";
+import {
+  getTokenFromLocalStorage,
+  decodeToken,
+  isTokenExpired,
+} from "@/lib/auth";
+import { getAvatarColor } from "@/lib/utils";
+
+function getInitials(name: string | undefined | null) {
+  if (!name) return "?";
+  return name[0];
+}
 
 const data = {
-  user: {
-    name: "Macga",
-    email: "macga@criticrew.com",
-    avatar: "https://github.com/shadcn.png",
-  },
   navMain: [
     {
       title: "영화",
@@ -148,6 +153,31 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [user, setUser] = React.useState<
+    | {
+        name: string;
+        email: string;
+        avatar: string;
+        color: string;
+      }
+    | undefined
+  >();
+
+  React.useEffect(() => {
+    const token = getTokenFromLocalStorage();
+    if (token && !isTokenExpired(token)) {
+      const decoded = decodeToken(token);
+      if (decoded) {
+        setUser({
+          name: decoded.nickname,
+          email: decoded.email,
+          avatar: getInitials(decoded.nickname),
+          color: getAvatarColor(decoded.nickname),
+        });
+      }
+    }
+  }, []);
+
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarContent>
@@ -156,7 +186,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   );
