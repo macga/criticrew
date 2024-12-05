@@ -18,6 +18,11 @@ model User {
   email     String   @unique
   password  String
   nickname  String
+  avatar    String?  // 아바타 이미지 URL
+  role      Role     @default(USER)
+  status    UserStatus @default(ACTIVE)
+  isEmailVerified Boolean @default(false)
+  lastLoginAt DateTime?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -48,7 +53,24 @@ model Follow {
   @@unique([followerId, followingId])
 }
 
+model TMDBApiLog {
+  id        Int      @id @default(autoincrement())
+  type      String   // movie, tv, person
+  tmdbId    Int      
+  endpoint  String   
+  timestamp DateTime @default(now())
+
+  @@index([type, tmdbId])
+  @@index([timestamp])
+}
+
 enum Role {
   USER
   ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
 }

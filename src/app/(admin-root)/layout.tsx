@@ -27,22 +27,22 @@ export default function AdminRootLayout({
       <SidebarProvider
         style={
           {
-            "--sidebar-width": "350px",
+            "--sidebar-width": "280px",
           } as React.CSSProperties
         }>
         <AdminSidebar />
         <SidebarInset>
-          <header className="sticky top-0 flex shrink-0 items-center gap-2 border-b bg-background p-4">
+          <header className="sticky top-0 flex z-50 w-full shrink-0 items-center gap-2 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:border-border p-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">All Inboxes</BreadcrumbLink>
+                  <BreadcrumbLink href="#">관리자 홈</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Inbox</BreadcrumbPage>
+                  <BreadcrumbPage>대시보드</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
